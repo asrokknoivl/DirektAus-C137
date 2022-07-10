@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
 <div id="space"></div>
-    {% for article in db[:10] %}
+    {% for article in db[:20] %}
         <div class="article">
             <a href='{{article[0]}}'><img src="{{url_for('static', filename= '/src_logos_2/' +  article[2])}}" alt="" width = 30px height="30px" style="opacity: 100%;" class="dot"></a>
             <a href = '{{article[0]}}' class="artcl"  > {{article[1]}} - <span class="src">{{article[3]}}</span> </a><br>
         </div>
         {% if loop.index == 5 %}
-            <a href="/random_science" class = 'load'>Load more</a>
+            <a href="/random_science" class = 'load'>Refresh</a>
         {% endif %}
     {% endfor %}
 {% endblock content %}

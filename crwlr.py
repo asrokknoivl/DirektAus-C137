@@ -34,8 +34,8 @@ class crawling_machine:
         return link
 
     def auto_article_extractor(self , url , code , name):
-        open('dzdata/db.csv' , 'a').close()
-        open('dzdata/db_links.csv', 'a').close()
+        open('data/db.csv' , 'a').close()
+        open('data/db_links.csv', 'a').close()
         articles = []
         links = []
         req = requests.get(url , headers={'User-Agent': 'Mozilla/5.0'}).text
@@ -54,7 +54,7 @@ class crawling_machine:
 
 
     def get_old_data(self , code):
-        with open(f'dzdata/{code}.csv') as file:
+        with open(f'data/{code}.csv') as file:
             articles = file.read().split()
         return articles
 
@@ -65,13 +65,13 @@ class crawling_machine:
             if article[0] in old_articles:
                 continue
             filtered_articles.append(article)
-        with open('dzdata/db_links.csv' , 'a', newline='') as file:
+        with open('data/db_links.csv' , 'a', newline='') as file:
             for artcl in filtered_articles:
                 try:
                     file.write(artcl[0] + '\n')
                 except:
                     pass
-        with open('dzdata/db.csv' , 'a' , newline='' ) as file:
+        with open('data/db.csv' , 'a' , newline='' ) as file:
             filew = csv.writer(file , delimiter='|')
             for artcl in filtered_articles:
                 try:
@@ -80,7 +80,7 @@ class crawling_machine:
                     pass
 
     def save(self , articles , code):
-        with open(f'dzdata/{code}.csv' , 'w' , newline= '') as file:
+        with open(f'data/{code}.csv' , 'w' , newline= '') as file:
             filew = csv.writer(file)
             for article in articles:
                 try:

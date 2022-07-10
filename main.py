@@ -1,5 +1,8 @@
 from flask import Flask,redirect,url_for,render_template
 import random
+import datetime
+
+init_date_time = str(datetime.datetime.now()).split()[0]
 
 app = Flask(__name__)
 
